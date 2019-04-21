@@ -29,6 +29,19 @@
              ]
         },
         {
+            "name": "Python: ambig csv with svg",
+            "type": "python",
+            "request": "launch",
+            "program": "example.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--svgout", "example.svg",
+                "csv",
+                "--columncsv", "ambig.csv",
+                "--rowcsv", "ambig.csv"
+             ]
+        },
+        {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
             "request": "launch",

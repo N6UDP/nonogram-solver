@@ -63,15 +63,17 @@ if args.verbose:
     print(verbose.getvalue())
 if solveable:
     print("The puzzle was solvable")
+    for r in nonogram_solver.puzzle_state:
+        print(*list(map(lambda x: '█' if x==1 else ' ', r)),sep='')
 else:
     print("The puzzle was not solvable")
+    for r in nonogram_solver.puzzle_state:
+        print(*list(map(lambda x: '?' if x==-1 else ' ', r)),sep='')
+
 
 #import pprint
 #pp = pprint.PrettyPrinter(indent=4)
 #pp.pprint(nonogram_solver.puzzle_state)
-
-for r in nonogram_solver.puzzle_state:
-    print(*list(map(lambda x: '█' if x==1 else ' ', r)),sep='')
 
 
 if args.svgout:
@@ -86,6 +88,8 @@ if args.svgout:
         for c in r:
             if c == 1:
                 shapes.add(dwg.rect(insert=(cc*cm, rc*cm), size=(1*cm, 1*cm), fill='black', stroke='black', stroke_width=1))
+            elif c == -1:
+                shapes.add(dwg.rect(insert=(cc*cm, rc*cm), size=(1*cm, 1*cm), fill='red', stroke='black', stroke_width=1))
             else:
                 shapes.add(dwg.rect(insert=(cc*cm, rc*cm), size=(1*cm, 1*cm), fill='white', stroke='black', stroke_width=1))
             cc=cc+1
